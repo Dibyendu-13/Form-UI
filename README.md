@@ -11,13 +11,13 @@ failures and delayed processing are common.
 
 ## 🚀 Features
 
--   Immediate pending UI feedback\
+-   Immediate pending UI feedback
 -   Mock API with randomized outcomes:
     -   fast success (200)
     -   temporary failure (503)
     -   delayed success (5--10 seconds)
--   Automatic retry with limit\
--   Strong duplicate submission prevention\
+-   Automatic retry with limit
+-   Strong duplicate submission prevention
 -   Clear UI state transitions
 
 ------------------------------------------------------------------------
@@ -41,8 +41,8 @@ Open: http://localhost:3000
 
 # 🔄 State Transitions
 
-idle → pending → success\
-idle → pending → retrying → success\
+idle → pending → success
+idle → pending → retrying → success
 idle → pending → retrying → error
 
 ------------------------------------------------------------------------
