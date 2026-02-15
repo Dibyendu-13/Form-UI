@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# 📘 Eventually Consistent Form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page React application demonstrating safe async submission,
+eventual consistency, automatic retries, and duplicate-free processing
+using a simulated API.
 
-## Available Scripts
+This project models real-world payment/workflow systems where network
+failures and delayed processing are common.
 
-In the project directory, you can run:
+------------------------------------------------------------------------
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   Immediate pending UI feedback\
+-   Mock API with randomized outcomes:
+    -   fast success (200)
+    -   temporary failure (503)
+    -   delayed success (5--10 seconds)
+-   Automatic retry with limit\
+-   Strong duplicate submission prevention\
+-   Clear UI state transitions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+------------------------------------------------------------------------
 
-### `npm test`
+## 🧩 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   React (Create React App)
+-   styled-components
+-   In-memory mock API (frontend simulation)
 
-### `npm run build`
+------------------------------------------------------------------------
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ▶️ Running the App
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install\
+npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Open: http://localhost:3000
 
-### `npm run eject`
+------------------------------------------------------------------------
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 🔄 State Transitions
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+idle → pending → success\
+idle → pending → retrying → success\
+idle → pending → retrying → error
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+------------------------------------------------------------------------
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# 🔁 Retry Logic
 
-## Learn More
+-   Retries only on temporary failures
+-   Max retries: 3
+-   Linear backoff: 1s, 2s, 3s
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+------------------------------------------------------------------------
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 🚫 Duplicate Prevention
 
-### Code Splitting
+UI Layer: - Submit disabled during in-flight requests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+API Layer: - Idempotency key using email + amount - Processed requests
+stored in memory
 
-### Analyzing the Bundle Size
+------------------------------------------------------------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# ⏳ Eventual Consistency
 
-### Making a Progressive Web App
+Random success, failure, and delayed responses simulate real-world
+systems.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+------------------------------------------------------------------------
 
-### Advanced Configuration
+## ✅ Conclusion
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Demonstrates safe async workflows with retries and idempotent handling.
