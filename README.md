@@ -15,7 +15,7 @@ failures and delayed processing are common.
 -   Mock API with randomized outcomes:
     -   fast success (200)
     -   temporary failure (503)
-    -   delayed success (5--10 seconds)
+    -   delayed success (5-10 seconds)
 -   Automatic retry with limit
 -   Strong duplicate submission prevention
 -   Clear UI state transitions
